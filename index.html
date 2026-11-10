@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Playable Ads Portfolio</title>
+    <meta name="robots" content="noindex, nofollow">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -11,6 +12,8 @@
             background: #0a0a0a;
             color: #fff;
             min-height: 100vh;
+            -webkit-user-select: none;
+            user-select: none;
         }
         header {
             text-align: center;
@@ -41,7 +44,6 @@
             overflow: hidden;
             transition: transform 0.2s, box-shadow 0.2s;
             cursor: pointer;
-            text-decoration: none;
             color: #fff;
             display: block;
         }
@@ -67,10 +69,6 @@
             font-weight: 600;
             margin-bottom: 6px;
         }
-        .card-info p {
-            color: #888;
-            font-size: 0.85rem;
-        }
         .tag {
             display: inline-block;
             background: #2a2a2a;
@@ -87,6 +85,45 @@
             color: #444;
             font-size: 0.85rem;
         }
+
+        /* Overlay */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.92);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        .overlay.active {
+            display: flex;
+        }
+        .overlay-close {
+            position: absolute;
+            top: 20px; right: 28px;
+            font-size: 2.2rem;
+            color: #888;
+            cursor: pointer;
+            z-index: 1001;
+            background: none;
+            border: none;
+            line-height: 1;
+            transition: color 0.2s;
+        }
+        .overlay-close:hover {
+            color: #fff;
+        }
+        .overlay iframe {
+            width: 400px;
+            height: 700px;
+            max-width: 95vw;
+            max-height: 85vh;
+            border: none;
+            border-radius: 12px;
+            background: #000;
+        }
     </style>
 </head>
 <body>
@@ -96,171 +133,227 @@
     </header>
     <div class="grid">
 
-        <a class="card" href="spooky-suites/index.html">
+        <div class="card" data-p="c3Bvb2t5LXN1aXRlcw==">
             <div class="card-thumb">&#127875;</div>
             <div class="card-info">
                 <h2>Spooky Suites</h2>
                 <span class="tag">Drag & Drop</span>
                 <span class="tag">HTML5</span>
             </div>
-        </a>
+        </div>
 
-        <a class="card" href="spooky-suites-2/index.html">
+        <div class="card" data-p="c3Bvb2t5LXN1aXRlcy0y">
             <div class="card-thumb">&#128123;</div>
             <div class="card-info">
                 <h2>Spooky Suites 2</h2>
                 <span class="tag">Fishing</span>
                 <span class="tag">HTML5</span>
             </div>
-        </a>
+        </div>
 
-        <a class="card" href="bitcoin-miner/index.html">
+        <div class="card" data-p="Yml0Y29pbi1taW5lcg==">
             <div class="card-thumb">&#9935;</div>
             <div class="card-info">
                 <h2>Bitcoin Miner</h2>
                 <span class="tag">Action RPG</span>
                 <span class="tag">HTML5</span>
             </div>
-        </a>
+        </div>
 
-        <a class="card" href="ragdoll-buddy/index.html">
+        <div class="card" data-p="cmFnZG9sbC1idWRkeQ==">
             <div class="card-thumb">&#129516;</div>
             <div class="card-info">
                 <h2>Ragdoll Buddy</h2>
                 <span class="tag">Logic Puzzle</span>
                 <span class="tag">HTML5</span>
             </div>
-        </a>
+        </div>
 
-        <a class="card" href="dress/index.html">
+        <div class="card" data-p="ZHJlc3M=">
             <div class="card-thumb">&#128087;</div>
             <div class="card-info">
                 <h2>Podium</h2>
                 <span class="tag">Fashion</span>
                 <span class="tag">HTML5</span>
             </div>
-        </a>
+        </div>
 
-        <a class="card" href="world-war/index.html">
+        <div class="card" data-p="d29ybGQtd2Fy">
             <div class="card-thumb">&#9876;</div>
             <div class="card-info">
                 <h2>World War</h2>
                 <span class="tag">Shooter</span>
                 <span class="tag">HTML5</span>
             </div>
-        </a>
+        </div>
 
-        <a class="card" href="match3/index.html">
+        <div class="card" data-p="bWF0Y2gz">
             <div class="card-thumb">&#127924;</div>
             <div class="card-info">
                 <h2>Match 3</h2>
                 <span class="tag">Match-3</span>
                 <span class="tag">HTML5</span>
             </div>
-        </a>
+        </div>
 
-        <a class="card" href="monopoly/index.html">
+        <div class="card" data-p="bW9ub3BvbHk=">
             <div class="card-thumb">&#127922;</div>
             <div class="card-info">
                 <h2>Monopoly</h2>
                 <span class="tag">Match-3</span>
                 <span class="tag">HTML5</span>
             </div>
-        </a>
+        </div>
 
-        <a class="card" href="hero-wars/index.html">
+        <div class="card" data-p="aGVyby13YXJz">
             <div class="card-thumb">&#9876;</div>
             <div class="card-info">
                 <h2>Hero Wars</h2>
                 <span class="tag">RPG</span>
                 <span class="tag">HTML5</span>
             </div>
-        </a>
+        </div>
 
-        <a class="card" href="hero-wars-2/index.html">
+        <div class="card" data-p="aGVyby13YXJzLTI=">
             <div class="card-thumb">&#128737;</div>
             <div class="card-info">
                 <h2>Hero Wars 2</h2>
                 <span class="tag">RPG</span>
                 <span class="tag">HTML5</span>
             </div>
-        </a>
+        </div>
 
-        <a class="card" href="skins-and-avatars/index.html">
+        <div class="card" data-p="c2tpbnMtYW5kLWF2YXRhcnM=">
             <div class="card-thumb">&#127912;</div>
             <div class="card-info">
                 <h2>Skins & Avatars</h2>
                 <span class="tag">3D Dress Up</span>
                 <span class="tag">HTML5</span>
             </div>
-        </a>
+        </div>
 
-        <a class="card" href="epic-race/index.html">
+        <div class="card" data-p="ZXBpYy1yYWNl">
             <div class="card-thumb">&#127947;</div>
             <div class="card-info">
                 <h2>Epic Race</h2>
                 <span class="tag">Racing</span>
                 <span class="tag">HTML5</span>
             </div>
-        </a>
+        </div>
 
-        <a class="card" href="memory-game/index.html">
+        <div class="card" data-p="bWVtb3J5LWdhbWU=">
             <div class="card-thumb">&#129504;</div>
             <div class="card-info">
                 <h2>Memory Game</h2>
                 <span class="tag">Match</span>
                 <span class="tag">HTML5</span>
             </div>
-        </a>
+        </div>
 
-        <a class="card" href="mahjong/index.html">
+        <div class="card" data-p="bWFoam9uZw==">
             <div class="card-thumb">&#126980;</div>
             <div class="card-info">
                 <h2>Mahjong</h2>
                 <span class="tag">Mahjong</span>
                 <span class="tag">HTML5</span>
             </div>
-        </a>
+        </div>
 
-        <a class="card" href="mahjong-2/index.html">
+        <div class="card" data-p="bWFoam9uZy0y">
             <div class="card-thumb">&#126982;</div>
             <div class="card-info">
                 <h2>Mahjong 2</h2>
                 <span class="tag">Mahjong</span>
                 <span class="tag">HTML5</span>
             </div>
-        </a>
+        </div>
 
-        <a class="card" href="color-cargo/index.html">
+        <div class="card" data-p="Y29sb3ItY2FyZ28=">
             <div class="card-thumb">&#128230;</div>
             <div class="card-info">
                 <h2>Color Cargo</h2>
                 <span class="tag">Puzzle</span>
                 <span class="tag">HTML5</span>
             </div>
-        </a>
+        </div>
 
-<a class="card" href="fish/index.html">
+        <div class="card" data-p="ZmlzaA==">
             <div class="card-thumb">&#128032;</div>
             <div class="card-info">
                 <h2>Fish</h2>
                 <span class="tag">Hidden Object</span>
                 <span class="tag">HTML5</span>
             </div>
-        </a>
+        </div>
 
-        <a class="card" href="gin-rummy/index.html">
+        <div class="card" data-p="Z2luLXJ1bW15">
             <div class="card-thumb">&#127183;</div>
             <div class="card-info">
                 <h2>Gin Rummy</h2>
                 <span class="tag">Card</span>
                 <span class="tag">HTML5</span>
             </div>
-        </a>
+        </div>
+
+        <div class="card" data-p="dHJhZGVy">
+            <div class="card-thumb">&#127183;</div>
+            <div class="card-info">
+                <h2>Trader</h2>
+                <span class="tag">Casino</span>
+                <span class="tag">HTML5</span>
+            </div>
+        </div>
 
     </div>
     <footer>
         Playable Ads Developer &mdash; HTML5 / JS / CSS
     </footer>
+
+    <div class="overlay" id="overlay">
+        <button class="overlay-close" id="overlayClose">&times;</button>
+        <iframe id="playFrame" sandbox="allow-scripts allow-same-origin"></iframe>
+    </div>
+
+    <script>
+    !function(){
+        // Block right-click
+        document.addEventListener('contextmenu',function(e){e.preventDefault()});
+
+        // Block keyboard shortcuts (F12, Ctrl+U, Ctrl+S, Ctrl+Shift+I/J/C)
+        document.addEventListener('keydown',function(e){
+            if(e.key==='F12')e.preventDefault();
+            if(e.ctrlKey&&(e.key==='u'||e.key==='U'||e.key==='s'||e.key==='S'))e.preventDefault();
+            if(e.ctrlKey&&e.shiftKey&&/[ijcIJC]/.test(e.key))e.preventDefault();
+            if(e.metaKey&&e.altKey&&/[ijcIJC]/.test(e.key))e.preventDefault();
+            if(e.metaKey&&(e.key==='u'||e.key==='U'||e.key==='s'||e.key==='S'))e.preventDefault();
+        });
+
+        var overlay=document.getElementById('overlay');
+        var frame=document.getElementById('playFrame');
+        var closeBtn=document.getElementById('overlayClose');
+
+        // Open playable in iframe overlay
+        document.querySelectorAll('.card[data-p]').forEach(function(card){
+            card.addEventListener('click',function(){
+                var d=atob(card.getAttribute('data-p'));
+                frame.src=d+'/index.html';
+                overlay.classList.add('active');
+            });
+        });
+
+        // Close overlay
+        function closeOverlay(){
+            overlay.classList.remove('active');
+            frame.src='about:blank';
+        }
+        closeBtn.addEventListener('click',closeOverlay);
+        overlay.addEventListener('click',function(e){
+            if(e.target===overlay)closeOverlay();
+        });
+        document.addEventListener('keydown',function(e){
+            if(e.key==='Escape')closeOverlay();
+        });
+    }();
+    </script>
 </body>
 </html>
